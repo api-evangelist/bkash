@@ -1,0 +1,28 @@
+generated: '2026-07-18'
+method: searched
+source: https://developer.bka.sh/
+versioning:
+  scheme: named-release + semver (beta channel)
+  current: 1.2.0-beta
+  codename: Inferno Dragon
+  docs: https://developer.bka.sh/changelog
+  note: >-
+    Checkout script is version-pinned in the URL path
+    (scripts.<env>.bka.sh/versions/<version>/checkout/...). Token API lifetime is
+    3600s with a mandated pre-expiry refresh window.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: >-
+    No formal deprecation/Sunset (RFC 8594) policy is published. A hard platform
+    requirement is in force — TLS 1.2 or higher only; older TLS/SSL is rejected.
+platform_requirements:
+- TLS 1.2 or higher required for all API calls.
+sla:
+  url: null
+  uptime_target: null
+status_page: null
+status_page_note: >-
+  No public developer-facing status page found for the Payment Gateway; error 503
+  ("System is undergoing maintenance") is the documented maintenance signal.
+deprecated_operations: []

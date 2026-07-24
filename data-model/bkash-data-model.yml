@@ -1,0 +1,41 @@
+generated: '2026-07-18'
+method: derived
+source: https://developer.bka.sh/docs
+description: >-
+  Entity-relationship model for the bKash Payment Gateway, derived from the
+  documented Checkout / Tokenized Checkout / Refund / Payout flows and webhook
+  payloads. No OpenAPI is published, so relationships are derived from documented
+  request/response fields and identifiers.
+entities:
+- name: Token
+  key: id_token
+  fields: [id_token, token_type, expires_in, refresh_token]
+  notes: 3600s lifetime; bootstrap for all payment operations.
+- name: Agreement
+  key: agreementID
+  fields: [agreementID, payerReference, agreementStatus, agreementExecuteTime]
+  notes: Tokenized Checkout consent binding between payer wallet and merchant.
+- name: Payment
+  key: paymentID
+  fields: [paymentID, payerReference, callbackURL, amount, currency, intent,
+    merchantInvoiceNumber, transactionStatus, trxID, bkashURL, statusCode, statusMessage]
+  notes: paymentID valid for a single execution, expires after 24 hours.
+- name: Refund
+  key: refundTrxID
+  fields: [paymentID, trxID, amount, sku, reason, refundTrxID, completedTime, transactionStatus]
+- name: Payout
+  key: trxID
+  fields: [amount, currency, receiverMSISDN, merchantInvoiceNumber, trxID, transactionStatus]
+  notes: Instant Payout (B2C) disbursement to a beneficiary wallet.
+- name: WebhookNotification
+  key: trxID
+  fields: [dateTime, debitMSISDN, creditOrganizationName, creditShortCode, trxID,
+    transactionStatus, transactionType, amount, currency, transactionReference, merchantInvoiceNumber]
+relationships:
+- {from: Payment, to: Token, type: belongs_to, via: Authorization}
+- {from: Payment, to: Agreement, type: belongs_to, via: agreementID}
+- {from: Refund, to: Payment, type: belongs_to, via: paymentID}
+- {from: Refund, to: Payment, type: belongs_to, via: trxID}
+- {from: WebhookNotification, to: Payment, type: belongs_to, via: trxID}
+- {from: Payout, to: Token, type: belongs_to, via: Authorization}
+render: null

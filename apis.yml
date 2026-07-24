@@ -1,9 +1,31 @@
 aid: bkash
 name: bKash
-description: 'bKash is a company surfaced as a portfolio company of softbank-vision-fund and added to
-  the API Evangelist network as a stub for enrichment. Sector: fintech. This profile is a lead awaiting
-  the enrichment pipeline.'
+description: >-
+  bKash is Bangladesh's largest mobile financial services (MFS) provider, offering
+  a Payment Gateway (PGW) that lets online and mobile merchants accept bKash wallet
+  payments through secure REST APIs. The developer platform (developer.bka.sh, public
+  beta "Inferno Dragon") documents Checkout (hosted iframe/URL), Tokenized Checkout
+  (agreement-based PIN-only payments), Instant Payout (B2C disbursement), Add Wallet,
+  Auth and Capture, Subscriptions, and real-time webhook Instant Payment Notifications.
+  Integration follows a token-based flow — Grant Token, Create Payment, Execute Payment,
+  Query, Refund — with a self-service sandbox (service-name.sandbox.bka.sh) and production
+  (service-name.pay.bka.sh) environments. bKash is a portfolio company associated with
+  the SoftBank Vision Fund and is majority owned by BRAC Bank, with investment from Ant
+  Group, the Bill & Melinda Gates Foundation, and IFC.
 url: https://raw.githubusercontent.com/api-evangelist/bkash/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://developer.bka.sh/favicon.ico
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
@@ -12,13 +34,108 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
 tags:
 - Company
 - Fintech
-apis: []
+- Payments
+- Payment Gateway
+- Mobile Financial Services
+- Digital Wallet
+- Bangladesh
+- Checkout
+- Webhooks
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- name: bKash Payment Gateway (PGW)
+  description: >-
+    REST API for accepting bKash payments — token-based auth (Grant/Refresh Token),
+    Checkout and Tokenized Checkout (create/execute/query payment, create/execute
+    agreement), Refund, Instant Payout (B2C), and webhook Instant Payment Notifications.
+  humanURL: https://developer.bka.sh/
+  baseURL: https://tokenized.pay.bka.sh
+  tags:
+  - Payments
+  - Checkout
+  - Tokenized Checkout
+  - Refund
+  - Payout
+  properties:
+  - type: Documentation
+    url: https://developer.bka.sh/docs
+  - type: APIReference
+    url: https://developer.bka.sh/reference
+  - type: GettingStarted
+    url: https://developer.bka.sh/docs
+  - type: Authentication
+    url: authentication/bkash-authentication.yml
+  - type: ErrorCatalog
+    url: errors/bkash-error-codes.yml
+  - type: Webhooks
+    url: asyncapi/bkash-webhooks.yml
+  - type: Sandbox
+    url: sandbox/bkash-sandbox.yml
+  - type: Conventions
+    url: conventions/bkash-conventions.yml
+  - type: Lifecycle
+    url: lifecycle/bkash-lifecycle.yml
+  - type: DataModel
+    url: data-model/bkash-data-model.yml
+  - type: MCPServer
+    url: mcp/bkash-mcp.yml
+common:
+- type: DomainSecurity
+  url: security/bkash-domain-security.yml
+- type: DeveloperPortal
+  url: https://developer.bka.sh/
+- type: Documentation
+  url: https://developer.bka.sh/docs
+- type: APIReference
+  url: https://developer.bka.sh/reference
+- type: GettingStarted
+  url: https://developer.bka.sh/docs
+- type: GitHubOrganization
+  url: https://github.com/bKash-developer
+- type: ChangeLog
+  url: changelog/bkash-changelog.yml
+- type: LLMsTxt
+  url: llms/bkash-llms.txt
+- type: Authentication
+  url: authentication/bkash-authentication.yml
+- type: ErrorCatalog
+  url: errors/bkash-error-codes.yml
+- type: Webhooks
+  url: asyncapi/bkash-webhooks.yml
+- type: Sandbox
+  url: sandbox/bkash-sandbox.yml
+- type: Conventions
+  url: conventions/bkash-conventions.yml
+- type: Idempotency
+  url: conventions/bkash-conventions.yml
+- type: Lifecycle
+  url: lifecycle/bkash-lifecycle.yml
+- type: Conformance
+  url: conformance/bkash-conformance.yml
+- type: DataModel
+  url: data-model/bkash-data-model.yml
+- type: Components
+  url: components/bkash-components.yml
+- type: Packages
+  url: packages/bkash-packages.yml
+- type: MCPServer
+  url: mcp/bkash-mcp.yml
+- type: Pricing
+  url: https://developer.bka.sh/usage-plan
+- type: Support
+  url: https://www.bkash.com/en/support
+- type: TermsOfService
+  url: https://www.bkash.com/en/page/tokenized_checkout
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

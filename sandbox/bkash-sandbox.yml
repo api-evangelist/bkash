@@ -1,0 +1,29 @@
+generated: '2026-07-18'
+method: searched
+source: https://developer.bka.sh/docs/product-overview.md
+summary: >-
+  bKash Payment Gateway provides a self-contained sandbox that mimics the real
+  payment experience with mocked back-end APIs, open to everyone regardless of
+  onboarding status. No e-money is deducted on sandbox transactions.
+environments:
+  sandbox:
+    host_pattern: https://<service-name>.sandbox.bka.sh
+    open_to_all: true
+    emoney_deducted: false
+    checkout_script: https://scripts.sandbox.bka.sh/versions/<version>/checkout/bKash-checkout-sandbox.js
+    merchant_demo: https://merchantdemo.sandbox.bka.sh/tokenized-checkout/version/v2
+    merchant_portal: https://pgw-integration.bkash.com/
+  production:
+    host_pattern: https://<service-name>.pay.bka.sh
+    emoney_deducted: true
+    credentials: Issued by bKash after official onboarding completes.
+credentials:
+  note: >-
+    Sandbox credentials (username, password, app_key, app_secret) are provided by
+    bKash. bKash publishes no static/shared test wallet numbers, test PINs or OTPs
+    in the public docs — test credentials are issued per merchant during onboarding,
+    so none are captured here (never invented).
+  test_values_published: false
+notes: >-
+  The script getCheckoutScript response returns the versioned sandbox checkout JS
+  URL; replace <version> with the current release (e.g. 1.2.0-beta).

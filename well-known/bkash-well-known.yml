@@ -1,0 +1,15 @@
+generated: '2026-07-18'
+method: searched
+description: >-
+  Probe of the /.well-known/ discovery surface for bKash hosts. No documents
+  returned 200; absence is valid recorded data. No WellKnown/SecurityTxt pointer
+  is emitted.
+hosts:
+- host: https://developer.bka.sh
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /llms.txt, status: 200, note: captured at llms/bkash-llms.txt}
+- host: https://www.bkash.com
+  documents:
+  - {path: /.well-known/security.txt, status: 403}

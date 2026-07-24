@@ -1,0 +1,50 @@
+generated: '2026-07-18'
+method: searched
+source: https://developer.bka.sh/docs
+summary: >-
+  Cross-cutting request/response conventions for the bKash Payment Gateway REST API,
+  captured from the developer portal. JSON over HTTPS (TLS 1.2+), token-based auth,
+  merchant-scoped idempotency via merchantInvoiceNumber, and a statusCode/statusMessage
+  (or errorCode/errorMessage) response envelope.
+transport:
+  protocol: HTTPS
+  tls: TLS 1.2 or higher required (older TLS/SSL rejected)
+  content_type: application/json
+  accept: application/json
+authentication:
+  style: Bearer id_token in Authorization header + X-App-Key
+  see: authentication/bkash-authentication.yml
+base_urls:
+  sandbox: https://<service-name>.sandbox.bka.sh
+  production: https://<service-name>.pay.bka.sh
+  note: service-name is per product (e.g. tokenized, checkout).
+idempotency:
+  supported: true
+  mechanism: merchantInvoiceNumber
+  detail: >-
+    Merchants supply a unique merchantInvoiceNumber (max 255 chars, excludes < > &)
+    on payment creation; bKash rejects duplicates (error 2029 "Duplicate for all
+    transactions", 2031 "Invalid merchant invoice number"). A created paymentID is
+    valid for a single execution and expires after 24 hours, and Execute Payment is
+    idempotent for an already-completed payment (2062/2117). This is a natural /
+    merchant-key idempotency contract rather than a dedicated Idempotency-Key header.
+  header: null
+pagination:
+  supported: false
+  note: Payment/agreement APIs are transaction-oriented; no list/pagination surface documented.
+error_envelope:
+  fields: [statusCode, statusMessage, errorCode, errorMessage]
+  catalog: errors/bkash-error-codes.yml
+webhooks:
+  supported: true
+  see: asyncapi/bkash-webhooks.yml
+versioning:
+  scheme: named-release + semver on beta channel (e.g. 1.2.0-beta)
+  see: lifecycle/bkash-lifecycle.yml
+rate_limiting:
+  documented: partial
+  detail: >-
+    Token refresh is capped at 2 calls/hour (exceeding blocks the caller for one
+    hour); OTP/verification resend and wrong-PIN attempts are limited (errors
+    2013/2015/2017). No general per-endpoint rate-limit response headers documented.
+currency: BDT

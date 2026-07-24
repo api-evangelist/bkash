@@ -1,0 +1,30 @@
+generated: '2026-07-18'
+method: searched
+source: https://developer.bka.sh/docs
+description: >-
+  Client-side embeddable payment components published by bKash for Checkout /
+  Tokenized Checkout. The bKash checkout JavaScript renders a secure hosted iframe
+  and exposes create/execute/onSuccess/onClose callbacks; it is loaded from a
+  version-pinned bKash-hosted script URL (requires jQuery).
+components:
+- family: Checkout (iframe)
+  name: bKash Checkout Script
+  type: hosted-iframe
+  loader:
+    sandbox: https://scripts.sandbox.bka.sh/versions/<version>/checkout/bKash-checkout-sandbox.js
+    production: https://scripts.pay.bka.sh/versions/<version>/checkout/bKash-checkout.js
+    discovery: >-
+      The exact versioned URL is returned by the getCheckoutScript response;
+      replace <version> with the current release (e.g. 1.2.0-beta).
+  requires: [jQuery]
+  config:
+    - paymentMode
+    - paymentRequest (amount, intent)
+    - createRequest / onCreatePayment callback
+    - executeRequestOnAuthorization / onExecutePayment callback
+    - onSuccess callback
+    - onClose callback
+  renders: Secure bKash-hosted payment iframe overlay on the merchant page.
+notes: >-
+  Distinct from server-side integration code. bKash ships no formal element/web-component
+  library beyond this hosted checkout script.

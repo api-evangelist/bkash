@@ -1,0 +1,55 @@
+generated: '2026-07-18'
+method: searched
+source: https://github.com/bKash-developer
+description: >-
+  First-party bKash developer artifacts published under the bKash-developer GitHub
+  organization. bKash ships no multi-language client SDK; it publishes a WooCommerce
+  payment plugin plus official demo/sample integrations and webhook listeners.
+packages:
+- name: bKash-for-woocommerce
+  kind: plugin
+  platform: WooCommerce (PHP)
+  language: php
+  registry: github
+  url: https://github.com/bKash-developer/bKash-for-woocommerce
+  license: GPL-3.0
+  official: true
+- name: pgw-merchant-backend-php
+  kind: sample
+  language: php
+  registry: github
+  url: https://github.com/bKash-developer/pgw-merchant-backend-php
+  description: Demo merchant back-end for bKash PGW integration in PHP.
+  official: true
+- name: bkash-pgwClient-demo-android
+  kind: sample
+  language: java
+  registry: github
+  url: https://github.com/bKash-developer/bkash-pgwClient-demo-android
+  description: Demo Android app with PGW integration.
+  official: true
+- name: bkash-pgwClient-demo-iOS
+  kind: sample
+  language: swift
+  registry: github
+  url: https://github.com/bKash-developer/bkash-pgwClient-demo-iOS
+  description: Demo iOS app with PGW integration.
+  official: true
+- name: webhook-endpoint-php
+  kind: sample
+  language: php
+  registry: github
+  url: https://github.com/bKash-developer/webhook-endpoint-php
+  description: Sample PHP listener for bKash Webhook.
+  official: true
+- name: merchant-webhook-endpoint
+  kind: sample
+  language: java
+  registry: github
+  url: https://github.com/bKash-developer/merchant-webhook-endpoint
+  description: Sample Java listener for bKash Webhook.
+  official: true
+notes: >-
+  No official client SDK on npm/PyPI/Packagist/Maven was found — community packages
+  exist (react-bkash, bkash-js, various Laravel packages) but are third-party and are
+  not marked official. No SDKs pointer is emitted (no first-party client library).

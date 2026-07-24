@@ -1,0 +1,63 @@
+generated: '2026-07-18'
+method: searched
+source: https://developer.bka.sh/docs/webhooks.md
+spec_type: Webhooks
+name: bKash Instant Payment Notification (IPN)
+summary: >-
+  bKash Payment Gateway delivers real-time payment notifications to a merchant-configured
+  listener URL via AWS SNS. bKash signs each message (SignatureVersion 1, SigningCertURL).
+  The listener is provisioned by bKash technical support during onboarding; the merchant
+  shares the listener URL and acknowledges the initial SubscriptionConfirmation.
+transport: aws-sns
+delivery: HTTP POST to merchant-provided listener URL
+signed: true
+signature:
+  scheme: AWS SNS message signature
+  fields: [SignatureVersion, Signature, SigningCertURL]
+provisioning: >-
+  Merchant shares the listener URL with bKash technical support during onboarding;
+  bKash provisions the SNS subscription. Merchant must acknowledge the
+  SubscriptionConfirmation to activate delivery.
+message_types:
+- type: SubscriptionConfirmation
+  header: 'x-amz-sns-message-type: SubscriptionConfirmation'
+  action: Acknowledge / confirm subscription via SubscribeURL to activate delivery.
+- type: Notification
+  header: 'x-amz-sns-message-type: Notification'
+  action: Process the inner Message payload (JSON string) for the transaction event.
+events:
+  description: >-
+    Notifications fire for payments received from customers via bKash Checkout or
+    Direct products, bKash Menu (*247#), bKash App, and bKash QR scan.
+  sources: [bKash Checkout, bKash Menu (*247#), bKash App, bKash QR scan]
+payload_fields:
+- {field: dateTime, description: Transaction datetime (yyyyMMddHHmmss)}
+- {field: debitMSISDN, description: Customer wallet MSISDN}
+- {field: creditOrganizationName, description: Merchant organization name}
+- {field: creditShortCode, description: Merchant short code}
+- {field: trxID, description: bKash transaction ID}
+- {field: transactionStatus, description: e.g. Completed}
+- {field: transactionType, description: Numeric code identifying the transaction channel}
+- {field: amount, description: Transaction amount}
+- {field: currency, description: Currency (BDT)}
+- {field: transactionReference, description: Merchant/user-provided reference (checkout iframe and customer app payment only)}
+- {field: merchantInvoiceNumber, description: Merchant order/invoice identifier}
+- {field: couponAmount, description: Coupon amount (coupon-associated payments only)}
+- {field: merchantShareAmount, description: Merchant contribution portion of the coupon (if any)}
+- {field: saleAmount, description: Actual payment amount before coupon (coupon-associated payments only)}
+transaction_types:
+- {code: '10002294', meaning: Payment via API}
+- {code: '10003126', meaning: Payment via QR}
+- {code: '10002175', meaning: Payment via USSD}
+- {code: '10002809', meaning: Redeem Voucher}
+- {code: '10002264', meaning: M2M Transfer via API}
+- {code: '10003209', meaning: M2M Transfer via QR}
+- {code: '10002177', meaning: M2M Transfer via USSD}
+- {code: '10003476', meaning: Payment via Bank}
+- {code: '10003237', meaning: B2B Collection Wallet to Merchant Plus (BC2M)}
+- {code: '10003236', meaning: Distributor to B2B Collection Wallet Transfer via USSD (D2BC)}
+- {code: '10004036', meaning: DSO to Merchant Plus-B2BC via API}
+asyncapi_spec: null
+notes: >-
+  bKash publishes no machine-readable AsyncAPI document; this artifact captures the
+  documented webhook (Instant Payment Notification) surface. spec_type Webhooks.

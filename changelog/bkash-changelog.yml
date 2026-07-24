@@ -1,0 +1,31 @@
+generated: '2026-07-18'
+method: searched
+source: https://developer.bka.sh/changelog
+scheme: named-release (codename + semver, beta channel)
+current_version: 1.2.0-beta
+release_codename: Inferno Dragon
+docs: https://developer.bka.sh/changelog
+entries:
+- version: 1.2.0-beta
+  codename: Inferno Dragon
+  date: null
+  breaking: false
+  highlights:
+  - Tokenized Checkout for faster PIN-only payments via pre-created agreement.
+  additions:
+  - Tokenized checkout API set
+  - SI/Aggregator footprint in checkout
+  - B2C fee information included in B2C payout API
+  fixes:
+  - Minor bug fixes
+  - iframe loading issue fix
+  source: https://developer.bka.sh/changelog/inferno-dragon-v120-beta.md
+- version: 1.0.0-beta
+  codename: Inferno Dragon
+  date: null
+  breaking: false
+  highlights:
+  - Official public beta launch for partners and users.
+  fixes:
+  - Stabilization and bug fixes
+  source: https://developer.bka.sh/changelog/inferno-dragon-v100-beta.md

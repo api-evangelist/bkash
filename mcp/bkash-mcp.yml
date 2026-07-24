@@ -1,0 +1,44 @@
+generated: '2026-07-18'
+method: derived
+status: candidate
+source: https://developer.bka.sh/docs
+description: >-
+  Candidate MCP server tool surface derived from bKash Payment Gateway documented
+  operations. bKash publishes no official hosted/remote MCP server; this is a
+  starting point (not authoritative), one tool per documented operation. bKash does
+  publish an llms.txt (llms/bkash-llms.txt) for agent consumption.
+server:
+  name: bkash
+  transport: http
+  url: null
+tools:
+- name: grant_token
+  description: Obtain an id_token to authorize subsequent bKash API calls.
+  source_operation: docs/grant-token
+- name: refresh_token
+  description: Refresh the id_token before expiry.
+  source_operation: docs/refresh-token
+- name: create_agreement
+  description: Create a Tokenized Checkout agreement (consent) for a payer.
+  source_operation: docs/create-agreement
+- name: execute_agreement
+  description: Finalize a Tokenized Checkout agreement creation request.
+  source_operation: docs/execute-agreement
+- name: create_payment
+  description: Create a payment request (Checkout / Tokenized Checkout).
+  source_operation: docs/create-payment
+- name: execute_payment
+  description: Finalize a payment request by paymentID.
+  source_operation: docs/execute-payment
+- name: query_payment
+  description: Query the status of a payment.
+  source_operation: docs/query-payment
+- name: refund_transaction
+  description: Reverse (refund) a completed transaction.
+  source_operation: docs/refund-transaction-4
+- name: refund_status
+  description: Check the status of a refunded transaction.
+  source_operation: docs/refund-status-3
+- name: instant_payout
+  description: Disburse funds to a beneficiary wallet (B2C Instant Payout).
+  source_operation: docs/instant-payout

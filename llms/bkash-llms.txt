@@ -1,0 +1,31 @@
+<!-- generated: 2026-07-18 | method: searched | source: https://developer.bka.sh/llms.txt -->
+# bKash Developer (Beta) Documentation
+
+> bKash Developer Guide provides comprehensive guidelines and API references for accepting bKash payments on Web or Mobile.
+
+## Guides
+- [Token Management Overview](https://developer.bka.sh/docs/token-management-overview-3.md): Description of bKash API access token creation and life cycle management.
+- [Create Agreement](https://developer.bka.sh/docs/create-agreement.md)
+- [Execute Agreement](https://developer.bka.sh/docs/execute-agreement.md): This API will finalize an agreement creation request.
+- [Create Payment](https://developer.bka.sh/docs/create-payment-1.md): This API will receive a tokenized payment creation request with necessary information.
+- [Execute Payment](https://developer.bka.sh/docs/execute-payment-1.md): This API will finalize a payment request.
+- [Refund Transaction](https://developer.bka.sh/docs/refund-transaction-4.md): Perform a payment reversal for a transaction multiple times.
+- [Refund Status](https://developer.bka.sh/docs/refund-status-3.md): Check status of a refunded transaction
+- [Token Management Overview](https://developer.bka.sh/docs/token-management-overview-1.md): Description of bKash API access token creation and life cycle management.
+- [Create Payment](https://developer.bka.sh/docs/create-payment-2.md): This API will receive a payment creation request with necessary information.
+- [Execute Payment](https://developer.bka.sh/docs/execute-payment-2.md): This API will finalize a payment request.
+- [Refund Transaction](https://developer.bka.sh/docs/refund-transaction-3.md): Perform a payment reversal for a transaction multiple times.
+- [Refund Status](https://developer.bka.sh/docs/refund-status-4.md): Check status of a refunded transaction
+- [Token Management Overview](https://developer.bka.sh/docs/token-management-overview-2.md): Description of bKash API access token creation and life cycle management.
+- [Create Payment](https://developer.bka.sh/docs/create-payment.md): This API will receive a payment creation request with necessary information.
+- [Execute Payment](https://developer.bka.sh/docs/execute-payment.md): This API will finalize a payment request.
+- [Refund API Overview](https://developer.bka.sh/docs/refund-api-overview.md)
+- [Instant Payment Notification](https://developer.bka.sh/docs/webhooks.md): Real-time Payment Notifications
+- [Error Codes](https://developer.bka.sh/docs/error-codes.md): API error codes and their interpretations
+
+## Pages
+- [Usage Plan](https://developer.bka.sh/usage-plan.md)
+
+## Changelog
+- [Inferno Dragon v1.2.0-beta](https://developer.bka.sh/changelog/inferno-dragon-v120-beta.md)
+- [Inferno Dragon v1.0.0-beta](https://developer.bka.sh/changelog/inferno-dragon-v100-beta.md)
