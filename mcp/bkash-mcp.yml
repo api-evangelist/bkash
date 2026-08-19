@@ -2,11 +2,9 @@ generated: '2026-07-18'
 method: derived
 status: candidate
 source: https://developer.bka.sh/docs
-description: >-
-  Candidate MCP server tool surface derived from bKash Payment Gateway documented
-  operations. bKash publishes no official hosted/remote MCP server; this is a
-  starting point (not authoritative), one tool per documented operation. bKash does
-  publish an llms.txt (llms/bkash-llms.txt) for agent consumption.
+description: Candidate MCP server tool surface derived from bKash Payment Gateway documented operations.
+  bKash publishes no official hosted/remote MCP server; this is a starting point (not authoritative),
+  one tool per documented operation. bKash does publish an llms.txt (llms/bkash-llms.txt) for agent consumption.
 server:
   name: bkash
   transport: http
@@ -42,3 +40,9 @@ tools:
 - name: instant_payout
   description: Disburse funds to a beneficiary wallet (B2C Instant Payout).
   source_operation: docs/instant-payout
+deployment:
+  mode: none
+  verified: derived
+  tools: 10
+  checked: '2026-08-12'
+  source: catalog MCP census
