@@ -64,6 +64,4 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-bKash is a company surfaced as a portfolio company of softbank-vision-fund and added to the API Evangelist network as a stub for enrichment. Sector: fintech. This profile is a lead awaiting the enrichment pipeline.
-
-Backed by: softbank-vision-fund
+bKash is Bangladesh's leading mobile financial services (MFS) provider, offering send money, payments, cash-out and a tokenized checkout API for merchants to accept bKash payments. Backed by BRAC Bank and Ant Group.
