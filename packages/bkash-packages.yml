@@ -1,10 +1,14 @@
-generated: '2026-07-18'
+generated: '2026-09-16'
 method: searched
 source: https://github.com/bKash-developer
 description: >-
   First-party bKash developer artifacts published under the bKash-developer GitHub
   organization. bKash ships no multi-language client SDK; it publishes a WooCommerce
   payment plugin plus official demo/sample integrations and webhook listeners.
+  Currency (version/published/last_pushed) read from the GitHub REST API 2026-09-16 —
+  these are GitHub-distributed repos, not registry (npm/PyPI/Packagist) releases, so
+  only the WooCommerce plugin cuts tagged releases; the demos/listeners are unversioned
+  and several have not been touched since 2018-2020 (a strong staleness signal).
 packages:
 - name: bKash-for-woocommerce
   kind: plugin
@@ -14,6 +18,10 @@ packages:
   url: https://github.com/bKash-developer/bKash-for-woocommerce
   license: GPL-3.0
   official: true
+  version: v1.0.5
+  published: '2022-04-17'
+  last_pushed: '2026-04-21'
+  note: Latest tagged release v1.0.5 is from 2022; repo still receives commits (last push 2026-04-21).
 - name: pgw-merchant-backend-php
   kind: sample
   language: php
@@ -21,6 +29,10 @@ packages:
   url: https://github.com/bKash-developer/pgw-merchant-backend-php
   description: Demo merchant back-end for bKash PGW integration in PHP.
   official: true
+  version: null
+  published: null
+  last_pushed: '2023-03-24'
+  note: No tagged release; version null. Last push 2023-03-24.
 - name: bkash-pgwClient-demo-android
   kind: sample
   language: java
@@ -28,6 +40,10 @@ packages:
   url: https://github.com/bKash-developer/bkash-pgwClient-demo-android
   description: Demo Android app with PGW integration.
   official: true
+  version: null
+  published: null
+  last_pushed: '2020-09-05'
+  note: No tagged release; last push 2020-09-05 (stale).
 - name: bkash-pgwClient-demo-iOS
   kind: sample
   language: swift
@@ -35,6 +51,10 @@ packages:
   url: https://github.com/bKash-developer/bkash-pgwClient-demo-iOS
   description: Demo iOS app with PGW integration.
   official: true
+  version: null
+  published: null
+  last_pushed: '2018-10-11'
+  note: No tagged release; last push 2018-10-11 (stale).
 - name: webhook-endpoint-php
   kind: sample
   language: php
@@ -42,6 +62,10 @@ packages:
   url: https://github.com/bKash-developer/webhook-endpoint-php
   description: Sample PHP listener for bKash Webhook.
   official: true
+  version: null
+  published: null
+  last_pushed: '2018-11-12'
+  note: No tagged release; last push 2018-11-12 (stale).
 - name: merchant-webhook-endpoint
   kind: sample
   language: java
@@ -49,7 +73,13 @@ packages:
   url: https://github.com/bKash-developer/merchant-webhook-endpoint
   description: Sample Java listener for bKash Webhook.
   official: true
+  version: null
+  published: null
+  last_pushed: '2018-07-03'
+  note: No tagged release; last push 2018-07-03 (stale).
 notes: >-
   No official client SDK on npm/PyPI/Packagist/Maven was found — community packages
-  exist (react-bkash, bkash-js, various Laravel packages) but are third-party and are
-  not marked official. No SDKs pointer is emitted (no first-party client library).
+  exist (react-bkash, bkash-js, various Laravel packages, a community "bkash MCP"
+  npm and unified TS payment-gateway SDKs) but are third-party and are not marked
+  official. No SDKs pointer is emitted (no first-party language client library); the
+  WooCommerce plugin is a first-party integration, not a client SDK.

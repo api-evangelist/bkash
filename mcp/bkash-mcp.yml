@@ -42,7 +42,15 @@ tools:
   source_operation: docs/instant-payout
 deployment:
   mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
   verified: derived
   tools: 10
-  checked: '2026-08-12'
+  checked: '2026-09-16'
   source: catalog MCP census
+  note: >-
+    bKash ships NO official/first-party MCP server (hosted or stdio). A third-party
+    "bkash" MCP package exists on npm (community-authored, unified BD payment gateways)
+    but is not published by bKash, so mode remains none and no endpoint/install is asserted.

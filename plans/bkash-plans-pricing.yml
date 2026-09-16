@@ -1,0 +1,27 @@
+generated: '2026-09-16'
+method: searched
+source: https://www.bkash.com/en/business/merchant
+docs: https://www.bkash.com/en/page/tokenized_checkout
+description: >-
+  bKash publishes no self-service, tiered developer pricing for the Payment Gateway /
+  Tokenized Checkout API. Merchant discount rate (the percentage fee on each accepted
+  payment) is negotiated per merchant during onboarding and set in the merchant
+  agreement — bKash's own PGW terms state that "based on the understanding between
+  Merchant and bKash, additional fee may be applicable on the payment amount". Market
+  reporting places the bKash merchant payment fee at roughly 1.5-2.0% of transaction
+  value, but bKash does not publish a fixed public rate card or API plan tiers.
+plan_count: 0
+billing_model: negotiated-merchant-discount-rate
+notes: >-
+  Enterprise / contact-us pricing only. The consumer-facing charge calculator
+  (https://www.bkash.com/en/help/charge-calculator) covers personal send-money and
+  cash-out charges, NOT merchant PGW API fees. No machine-readable pricing/catalog
+  endpoint is published. Reported ~1.5-2% merchant fee is third-party market data, not
+  a bKash-published rate, so it is recorded as context here and not as a plan tier.
+evidence:
+- url: https://www.bkash.com/en/business/merchant
+  status: 403
+  note: Real merchant page; returns 403 to non-browser crawlers (edge bot policy), reachable in a browser.
+- url: https://www.bkash.com/en/page/tokenized_checkout
+  status: 403
+  note: PGW Terms & Conditions page; states additional fee is per merchant/bKash understanding.

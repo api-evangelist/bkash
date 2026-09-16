@@ -1,15 +1,44 @@
-generated: '2026-07-18'
-method: searched
+generated: '2026-09-16'
+method: probed
 description: >-
-  Probe of the /.well-known/ discovery surface for bKash hosts. No documents
-  returned 200; absence is valid recorded data. No WellKnown/SecurityTxt pointer
-  is emitted.
+  Probe of the /.well-known/ discovery surface across every host bKash exposes — the
+  API host (tokenized.pay.bka.sh), the developer/docs host (developer.bka.sh) and the
+  primary site (www.bkash.com). No /.well-known/ document returned a real 200 body on
+  any host: the API gateway answers 403 {"message":"Forbidden"} to every path, the
+  docs host answers 404 (HTML SPA shell or bare 404), and the marketing site 403s a
+  bot challenge. Absence is valid recorded data. No WellKnown or SecurityTxt pointer is
+  emitted (contract rule: the pointer asserts a served document, and none exists).
 hosts:
+- host: https://tokenized.pay.bka.sh
+  note: AWS API Gateway; unauthenticated paths return 403 {"message":"Forbidden"} (not a document).
+  documents:
+  - {path: /.well-known/security.txt, status: 403}
+  - {path: /.well-known/openid-configuration, status: 403}
+  - {path: /.well-known/oauth-authorization-server, status: 403}
+  - {path: /.well-known/oauth-protected-resource, status: 403}
+  - {path: /.well-known/agent-card.json, status: 403}
+  - {path: /.well-known/agent.json, status: 403}
+  - {path: /.well-known/api-catalog, status: 403}
+  - {path: /.well-known/ai-plugin.json, status: 403}
+  - {path: /openapi.json, status: 403}
+  - {path: /swagger.json, status: 403}
 - host: https://developer.bka.sh
+  note: Docs SPA; /.well-known/* and /openapi.json return 404 (HTML shell or bare 404). llms.txt IS served.
   documents:
   - {path: /.well-known/security.txt, status: 404}
   - {path: /.well-known/openid-configuration, status: 404}
-  - {path: /llms.txt, status: 200, note: captured at llms/bkash-llms.txt}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/oauth-protected-resource, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /openapi.json, status: 404}
+  - {path: /llms.txt, status: 200, note: real document, captured at llms/bkash-llms.txt (not a /.well-known/ doc)}
 - host: https://www.bkash.com
+  note: Marketing site behind an edge bot policy; every path 403s a challenge HTML page (site exists in a browser).
   documents:
   - {path: /.well-known/security.txt, status: 403}
+  - {path: /.well-known/openid-configuration, status: 403}
+  - {path: /.well-known/agent-card.json, status: 403}
+  - {path: /.well-known/api-catalog, status: 403}

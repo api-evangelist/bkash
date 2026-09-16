@@ -21,14 +21,37 @@ base_urls:
 idempotency:
   supported: true
   mechanism: merchantInvoiceNumber
+  coverage: partial
+  scope: [create-payment, execute-payment]
   detail: >-
     Merchants supply a unique merchantInvoiceNumber (max 255 chars, excludes < > &)
     on payment creation; bKash rejects duplicates (error 2029 "Duplicate for all
     transactions", 2031 "Invalid merchant invoice number"). A created paymentID is
     valid for a single execution and expires after 24 hours, and Execute Payment is
     idempotent for an already-completed payment (2062/2117). This is a natural /
-    merchant-key idempotency contract rather than a dedicated Idempotency-Key header.
+    merchant-key idempotency contract scoped to the payment-creation and execution
+    operations rather than a dedicated Idempotency-Key header applied across every
+    mutating call (refund/payout carry no documented replay key), hence coverage: partial.
   header: null
+reversibility:
+  grade: documented
+  detail: >-
+    The Refund Transaction API reverses a completed payment and can be called
+    multiple times for partial refunds against the original trxID; Refund Status
+    queries the outcome. bKash publishes no numeric refund WINDOW (e.g. "within N
+    days") in the public developer docs, so this is a documented reversal path
+    without a stated, verifiable window — graded documented, not verified. No
+    invented window is asserted.
+  write_surfaces:
+  - operation: refund-transaction
+    reversal: refund
+    reverses: create-payment/execute-payment
+    window: null
+    window_source: null
+    docs: https://developer.bka.sh/docs/refund-transaction-4.md
+  - operation: execute-agreement
+    reversal: null
+    note: Agreement cancellation is handled via the Cancel Agreement flow; no explicit undo window documented.
 pagination:
   supported: false
   note: Payment/agreement APIs are transaction-oriented; no list/pagination surface documented.

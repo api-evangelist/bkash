@@ -1,0 +1,35 @@
+generated: '2026-09-16'
+method: searched
+source: https://developer.bka.sh/docs/token-management-overview.md
+docs: https://developer.bka.sh/docs/error-codes.md
+description: >-
+  bKash does not publish general per-endpoint request quotas or standard rate-limit
+  response headers (no X-RateLimit-*/RateLimit-*/Retry-After documented). The only
+  documented throttles are on the token-management and verification surfaces, signalled
+  through the proprietary errorCode envelope rather than HTTP headers.
+limit_count: 2
+limits:
+- scope: per-app-credential (token endpoint)
+  operation: refresh-token / grant-token
+  window: 1 hour
+  limit: 2 calls
+  on_exhaustion: >-
+    Caller is blocked for one hour. The docs instruct refreshing only once per token
+    lifetime (around the 50th-55th minute of the 3600s token) and never calling the
+    token APIs more than twice within an hour.
+  response_header: none documented
+  status_code: null
+- scope: per-transaction (OTP / PIN verification)
+  operation: verification / execute payment
+  window: per-transaction attempt count
+  limit: bounded retries
+  on_exhaustion: >-
+    Wrong-PIN / OTP-resend limits are enforced and surfaced as error codes 2013
+    (Wrong PIN), 2015, 2017 (verification / attempt limits) rather than an HTTP 429.
+  response_header: none documented
+  status_code: null
+notes: >-
+  No RFC-6585 429 / Retry-After or RateLimit-* headers are documented for the payment
+  APIs; the runtime signal for the token cap and verification limits is the numeric
+  errorCode in the response body (see errors/bkash-error-codes.yml). A generic 503
+  ("System is undergoing maintenance") is the documented availability signal.

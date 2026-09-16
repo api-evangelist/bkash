@@ -1,8 +1,9 @@
 aid: bkash
 name: bKash
 description: bKash is Bangladesh's leading mobile financial services (MFS) provider, offering send money,
-  payments, cash-out and a tokenized checkout API for merchants to accept bKash payments. Backed by BRAC
-  Bank and Ant Group.
+  payments, cash-out and a tokenized checkout API for merchants to accept bKash payments. The Payment
+  Gateway (PGW) exposes token management, checkout and tokenized checkout, refunds and B2C instant payout
+  over a REST/JSON interface. Backed by BRAC Bank and Ant Group.
 type: Index
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/bkash/refs/heads/main/apis.yml
@@ -15,20 +16,67 @@ tags:
 - Checkout
 - Bangladesh
 - Digital Wallet
+- Payment Gateway
 apis:
 - name: bKash Tokenized Checkout API
   description: Merchant payment API for accepting bKash payments — create, execute, query and refund tokenized
     payments; grant/refresh token auth.
   humanURL: https://developer.bka.sh/
   baseURL: https://tokenized.pay.bka.sh
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   properties:
   - type: Documentation
-    url: https://developer.bka.sh/
+    url: https://developer.bka.sh/docs
+  - type: APIReference
+    url: https://developer.bka.sh/docs
+  - type: Authentication
+    url: authentication/bkash-authentication.yml
+  - type: Conventions
+    url: conventions/bkash-conventions.yml
+  - type: Idempotency
+    url: conventions/bkash-conventions.yml
+  - type: ErrorCatalog
+    url: errors/bkash-error-codes.yml
+  - type: DataModel
+    url: data-model/bkash-data-model.yml
+  - type: Sandbox
+    url: sandbox/bkash-sandbox.yml
+  - type: RateLimits
+    url: rate-limits/bkash-rate-limits.yml
+  - type: Webhooks
+    url: asyncapi/bkash-webhooks.yml
+  - type: MCPServer
+    url: mcp/bkash-mcp.yml
+  - type: Components
+    url: components/bkash-components.yml
+  - type: Conformance
+    url: conformance/bkash-conformance.yml
+  - type: Lifecycle
+    url: lifecycle/bkash-lifecycle.yml
+  - type: ChangeLog
+    url: changelog/bkash-changelog.yml
+  - type: Plans
+    url: plans/bkash-plans-pricing.yml
+  - type: Packages
+    url: packages/bkash-packages.yml
 common:
 - type: Website
   url: https://www.bkash.com
-- type: Documentation
+- type: DeveloperPortal
   url: https://developer.bka.sh/
+- type: Documentation
+  url: https://developer.bka.sh/docs
+- type: GitHubOrganization
+  url: https://github.com/bKash-developer
+- type: LLMsTxt
+  url: llms/bkash-llms.txt
+- type: DomainSecurity
+  url: security/bkash-domain-security.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-09-16'
+  status: enriched
+  artifacts_added: 2
+  pass: local-v3
