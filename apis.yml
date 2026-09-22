@@ -9,6 +9,9 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.j
 url: https://raw.githubusercontent.com/api-evangelist/bkash/refs/heads/main/apis.yml
 created: '2026-09-16'
 modified: '2026-09-16'
+x-docs-platform: readme
+x-docs-platform-confidence: high
+x-docs-platform-checked: 2026-09-20
 tags:
 - Payments
 - Mobile Financial Services
