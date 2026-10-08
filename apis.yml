@@ -63,6 +63,10 @@ apis:
   - type: Packages
     url: packages/bkash-packages.yml
 common:
+- type: Plans
+  url: plans/bkash-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/bkash-rate-limits.yml
 - url: https://www.bkash.com/blog
   type: Blog
 - type: Website
